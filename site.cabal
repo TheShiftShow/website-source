@@ -1,0 +1,22 @@
+Name:                   site
+Version:                1.0.0
+Synopsis:               The Shift
+Homepage:               http://theshift.show
+Author:                 Gordon Fontenot <gordon@fonten.io>
+Maintainer:             Gordon Fontenot <gordon@fonten.io>
+Build-Type:             Simple
+Cabal-Version:          >= 1.10
+
+Executable site
+  Default-Language:     Haskell2010
+  HS-Source-Dirs:       src
+  Main-Is:              Site.hs
+  GHC-Options:          -Wall -threaded
+  Build-Depends:        base
+                      , hakyll == 4.7.*
+                      , pandoc
+                      , filepath
+
+Source-Repository head
+  Type:                 git
+  Location:             https://github.com/TheShiftShow/website-source
