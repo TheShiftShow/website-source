@@ -20,7 +20,7 @@ test:
   override:
     - stack build
     - stack exec site -- build
-    - stack exec site -- check --internal-links
+    # - stack exec site -- check --internal-links
 
 deployment:
   master:
