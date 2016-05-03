@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Deploy the build with CI
+
+set -e
+
+git config --global user.name "Blog Deployment Bot"
+git config --global user.email "blogbot@theshift.show"
+
+./bin/deploy
