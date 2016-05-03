@@ -1,22 +1,25 @@
-Name:                   site
-Version:                1.0.0
-Synopsis:               The Shift
-Homepage:               http://theshift.show
-Author:                 Gordon Fontenot <gordon@fonten.io>
-Maintainer:             Gordon Fontenot <gordon@fonten.io>
-Build-Type:             Simple
-Cabal-Version:          >= 1.10
+name:                    site
+version:                 1.0.0
+synopsis:                The Shift
+homepage:                http://theshift.show
+author:                  Gordon Fontenot <gordon@fonten.io>
+maintainer:              Gordon Fontenot <gordon@fonten.io>
+build-type:              Simple
+cabal-version:           >= 1.10
 
-Executable site
-  Default-Language:     Haskell2010
-  HS-Source-Dirs:       src
-  Main-Is:              Site.hs
-  GHC-Options:          -Wall -threaded
-  Build-Depends:        base
-                      , hakyll == 4.7.*
-                      , pandoc
-                      , filepath
+executable site
+  default-language:      Haskell2010
+  hs-source-dirs:        src
+  main-is:               Site.hs
+  ghc-options:           -Wall -threaded
 
-Source-Repository head
-  Type:                 git
-  Location:             https://github.com/TheShiftShow/website-source
+  build-depends:         base
+                       , hakyll == 4.7.*
+                       , pandoc
+                       , filepath
+
+  default-extensions:    OverloadedStrings
+
+source-repository head
+  type:                 git
+  location:             https://github.com/TheShiftShow/website-source
