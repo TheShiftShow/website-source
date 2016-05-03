@@ -44,9 +44,9 @@ contents of this site with your static-site server of choice. I use [pow]:
 
 ```
 % cd ~/.pow
-% mkdir theshift/public
-% cd theshift/public
-% ln -s /path/to/_site
+% mkdir theshift
+% cd theshift
+% ln -s /path/to/_site ./public
 ```
 
 Then you will be able to view the generated site at `theshift.dev`.
