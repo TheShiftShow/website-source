@@ -1,12 +1,9 @@
---------------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
-import           Hakyll
+import Hakyll
 
+import Site.Config
 
---------------------------------------------------------------------------------
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith hakyllConfig $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -60,7 +57,6 @@ main = hakyll $ do
     match "templates/*" $ compile templateCompiler
 
 
---------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
