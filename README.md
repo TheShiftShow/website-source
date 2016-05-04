@@ -9,7 +9,7 @@ where the static site is built, and then the whole thing is deployed to
 
 [Hakyll]: http://jaspervdj.be/hakyll/
 [CircleCI]: https://circleci.com/gh/TheShiftShow/website-source
-[GitHub Pages]: https://github.com/TheShiftShow/TheShiftShow.github.com
+[GitHub Pages]: https://github.com/TheShiftShow/TheShiftShow.github.io
 
 ## Local Development ##
 
