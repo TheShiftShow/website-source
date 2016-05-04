@@ -1,4 +1,6 @@
-module Site.Config where
+module Site.Config
+    ( hakyllConfig
+    ) where
 
 import Hakyll
     ( Configuration

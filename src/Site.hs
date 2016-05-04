@@ -1,63 +1,46 @@
 import Hakyll
 
+import Site.Compilers
 import Site.Config
+import Site.Contexts
+import Site.Routes
+import Site.URLHelper
 
 main :: IO ()
 main = hakyllWith hakyllConfig $ do
-    match "images/*" $ do
-        route   idRoute
+    match "episodes/*" $ do
+        route indexedEpisodeRoute
+        compile $ pandocCompiler
+            >>= saveSnapshot "content"
+            >>= loadAndApplyTemplate "templates/episode.html" episodeCtx
+            >>= replaceIndexLinks
+
+    create ["index.html"] $ do
+        route idRoute
+        compile $ do
+            episodes <- recentFirst =<< loadAll "episodes/*"
+            let ctx = mainCtx episodes
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/main.html" ctx
+                >>= loadAndApplyTemplate "templates/default.html" ctx
+                >>= replaceIndexLinks
+
+    match "root/nojekyll" $ do
+        route makeHidden
         compile copyFileCompiler
 
     match "css/*" $ do
-        route   idRoute
+        route cssRoute
         compile compressCssCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
+    compileTemplates $
+             "templates/*"
+        .||. "partials/*"
 
-    match "posts/*" $ do
-        route $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= relativizeUrls
+    copyInPlace $
+             "images/**"
 
-    create ["archive.html"] $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
-                    defaultContext
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
-
-
-    match "index.html" $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
-                    defaultContext
-
-            getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
-                >>= relativizeUrls
-
-    match "templates/*" $ compile templateCompiler
-
-
-postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
-    defaultContext
+    match "root/*" $ do
+        route makeRoot
+        compile copyFileCompiler

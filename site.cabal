@@ -20,6 +20,13 @@ executable site
 
   default-extensions:    OverloadedStrings
 
+  other-modules:         Site.Compilers
+                       , Site.Config
+                       , Site.Constants
+                       , Site.Contexts
+                       , Site.Routes
+                       , Site.URLHelper
+
 source-repository head
   type:                 git
   location:             https://github.com/TheShiftShow/website-source
