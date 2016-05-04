@@ -14,7 +14,7 @@ stack exec site -- build
 tmp_dir=$HOME/_tmp
 
 mkdir $tmp_dir
-git clone git@github.com:TheShiftShow/TheShiftShow.github.io.git $tmp_dir
+git clone git@github.com:TheShiftShow/theshiftshow.github.io.git $tmp_dir
 
 rm -rf $tmp_dir/*
 
