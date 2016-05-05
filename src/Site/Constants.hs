@@ -3,4 +3,4 @@ module Site.Constants
     ) where
 
 siteTitle :: String
-siteTitle = "The Shift"
+siteTitle = "the shift"
