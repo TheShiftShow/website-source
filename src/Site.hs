@@ -2,6 +2,7 @@ import Hakyll
 
 import Site.Compilers
 import Site.Config
+import Site.Constants
 import Site.Contexts
 import Site.Routes
 import Site.URLHelper
@@ -26,6 +27,18 @@ main = hakyllWith hakyllConfig $ do
                 >>= loadAndApplyTemplate "templates/main.html" ctx
                 >>= loadAndApplyTemplate "templates/default.html" ctx
                 >>= replaceIndexLinks
+
+    create ["feed.xml"] $ do
+        route idRoute
+        compile $ do
+            episodes <- recentFirst =<< loadAllSnapshots "episodes/*" "content"
+            let ctx = feedCtx episodes
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/feed.xml" ctx
+                >>= replaceIndexURLs siteHost
+                >>= repairExternalURLs siteHost
+                >>= replaceRelativeURLs siteHost
 
     match "root/nojekyll" $ do
         route makeHidden
