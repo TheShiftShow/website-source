@@ -11,13 +11,12 @@ import Data.Monoid ((<>))
 
 indexedEpisodeRoute :: Routes
 indexedEpisodeRoute = customRoute $ \i ->
-    let (path, name) = splitFileName $ toFilePath i
-    in episodesPath path </> episodeName name </> "index.html"
+    let (_, name) = splitFileName $ toFilePath i
+    in episodeNumber name </> "index.html"
 
   where
-    episodesPath = flip replaceDirectory "episodes"
-    episodeName = takeBaseName . dropDatePrefix
-    dropDatePrefix = drop 11
+    episodeNumber = extractNumber . takeBaseName
+    extractNumber = dropWhile (== '0') . take 4
 
 cssRoute :: Routes
 cssRoute = customRoute $ \i ->
