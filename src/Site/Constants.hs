@@ -18,7 +18,7 @@ podcastCategory :: String
 podcastCategory = "talk"
 
 podcastCoverArtURL :: String
-podcastCoverArtURL = "http://media.theshift.show/itunes-cover-art.jpg"
+podcastCoverArtURL = "http://images.theshift.show/itunes-cover-art.png"
 
 podcastDescription :: String
 podcastDescription = "A weekly show where Mark and Gordon muse over baseball and bullshit"
