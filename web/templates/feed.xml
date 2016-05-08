@@ -33,13 +33,13 @@
       <itunes:author>$author$</itunes:author>
       <itunes:summary>$summary$</itunes:summary>
 
-      <enclosure url="$enclosureUrl$" length="$enclosureLength$" type="$enclosureType$" />
+      <episode url="$episodeURL$" length="$episodeLength$" type="audio/mpeg" />
 
-      <guid>$enclosureUrl$</guid>
+      <guid>$episodeURL$</guid>
 
-      <pubDate>$pubDate$</pubDate>
+      <pubDate>$date$</pubDate>
 
-      <itunes:duration>$duration$</itunes:duration>
+      <itunes:duration>$episodeDuration$</itunes:duration>
 
     </item>
     $endfor$
