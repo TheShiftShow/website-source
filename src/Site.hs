@@ -13,6 +13,7 @@ main = hakyllWith hakyllConfig $ do
         compile $ pandocCompiler
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/episode.html" episodeCtx
+            >>= loadAndApplyTemplate "templates/default.html" episodeCtx
             >>= replaceIndexLinks
 
     create ["index.html"] $ do
