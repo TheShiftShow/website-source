@@ -17,6 +17,7 @@ episodeCtx = mconcat
 feedCtx :: [Item String] -> Context String
 feedCtx episodes = mconcat
     [ listField "episodes" episodeCtx (return episodes)
+    , constField "title" siteTitle
     , constField "root" siteHost
     , constField "description" podcastDescription
     , constField "subtitle" podcastSubtitle
