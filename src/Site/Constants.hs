@@ -15,7 +15,7 @@ podcastAuthor :: String
 podcastAuthor = "Mark Adams and Gordon Fontenot"
 
 podcastCategory :: String
-podcastCategory = "talk"
+podcastCategory = "Sports & Recreation"
 
 podcastCoverArtURL :: String
 podcastCoverArtURL = "http://images.theshift.show/itunes-cover-art.png"
@@ -30,7 +30,7 @@ podcastExplicit :: String
 podcastExplicit = "yes"
 
 podcastSubCategory :: String
-podcastSubCategory = "talk"
+podcastSubCategory = "Professional"
 
 podcastSubtitle :: String
 podcastSubtitle = "Baseball and Bullshit"
