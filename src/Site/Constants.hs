@@ -39,4 +39,4 @@ siteHost :: String
 siteHost = "http://theshift.show"
 
 siteTitle :: String
-siteTitle = "the shift"
+siteTitle = "The Shift"

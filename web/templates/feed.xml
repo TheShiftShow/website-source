@@ -9,7 +9,6 @@
     <language>en-us</language>
     <description>$description$</description>
 
-    <itunes:subtitle>$subtitle$</itunes:subtitle>
     <itunes:author>$author$</itunes:author>
     <itunes:summary>$description$</itunes:summary>
 
@@ -29,7 +28,6 @@
     $for(episodes)$
     <item>
       <title>$title$</title>
-      <itunes:subtitle>$subtitle$</itunes:subtitle>
       <itunes:author>$author$</itunes:author>
       <itunes:summary>$summary$</itunes:summary>
 

@@ -1,10 +1,7 @@
-<section id="episodes">
+<ul id="episodes">
   $for(episodes)$
-    <article>
-      <h3>
-        <a href="$url$">$title$</a>
-      </h3>
-      <time>$date$</time>
-    </article>
+    <li>
+      $partial("partials/episode.html")$
+    </li>
   $endfor$
-</section>
+</ul>

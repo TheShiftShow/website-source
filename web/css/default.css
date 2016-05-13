@@ -1,6 +1,42 @@
 body {
-    color: black;
-    font-size: 16px;
-    margin: 0px auto 0px auto;
-    width: 600px;
+  color: black;
+  font-size: 16px;
+  font-family: Helvetica, Sans-Serif;
+
+  margin-top: 0;
+  border-top: 5px solid black;
+}
+
+main {
+  margin: 0px auto;
+  width: 600px;
+}
+
+header {
+  border-bottom: 2px dotted black;
+}
+
+#title {
+  text-transform: uppercase;
+}
+
+#title a {
+  text-decoration: none;
+}
+
+#episodes {
+  list-style: none;
+  padding-left: 0;
+}
+
+a {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+audio {
+  display: block;
 }
