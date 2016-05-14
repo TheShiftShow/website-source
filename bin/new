@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+#
+# Upload a new episode and create a new metadata file
+
+set -e
+
+if ! command -v aws >/dev/null 2>&1; then
+  echo "This script requires the awc cli"
+  echo "Please install with pip:"
+  echo "pip install awscli"
+  exit 1
+fi
+
+input_file=$1
+
+if [[ "$input_file" == "" ]]; then
+  echo "Please specify the episode file"
+  exit 1
+fi
+
+printf "Episode number? (NNNN) "
+read number
+
+printf "Episode title? "
+read title
+
+today=$(date +"%F")
+size=$(stat -f%z "$input_file")
+
+normalized=$(echo $title | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+
+post_path="web/episodes/$number-$normalized.markdown"
+
+aws s3 cp "$input_file" "s3://episodes.theshift.show/$number.mp3"
+
+cat > "$post_path" << EOF
+---
+title: $title
+author: Mark Adams and Gordon Fontenot
+summary: SUMMARY HERE
+published: $today
+episodeURL: https://episodes.theshift.show/$number.mp3
+episodeSize: $size
+episodeDuration: HH:MM:SS
+---
+EOF
+
+echo "Created: $normalized.markdown"
+$VISUAL "$post_path"
