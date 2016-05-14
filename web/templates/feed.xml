@@ -31,7 +31,7 @@
       <itunes:author>$author$</itunes:author>
       <itunes:summary>$summary$</itunes:summary>
 
-      <episode url="$episodeURL$" length="$episodeLength$" type="audio/mpeg" />
+      <episode url="$episodeURL$" length="$episodeSize$" type="audio/mpeg" />
 
       <guid>$episodeURL$</guid>
 
